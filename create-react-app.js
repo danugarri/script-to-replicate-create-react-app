@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const projectName = process.argv[2];
-console.log('Creating new React app...');
+console.log('\x1b[34m Creating new React app... \x1b[0m');
 // create the root directory if not exists
 fs.lstat(__dirname, (_, stats) => {
  if (!stats.isDirectory()) {
@@ -16,6 +16,25 @@ execSync(`mkdir ${projectName}`);
 const projectPath = path.join(__dirname, projectName);
 console.log(`Moving into ${projectName} directory...`);
 process.chdir(projectPath);
+//initialising git repository if not exists
+console.log('Initialising an empty git repository...');
+fs.readdir(projectName, { withFileTypes: true },
+  (__, files) => {
+   const exists= files &&files.find(item => !item.name.includes(".git"))
+       if(!exists) {
+        
+        execSync(`git init`);
+       }
+      else{
+        console.log('There is already a git repository')
+      }
+ })
+// create public folder if not exists
+fs.lstat(__dirname, (_, stats) => {
+  if (!stats.isDirectory()) {
+ execSync(`mkdir public`);
+  }
+ })
 // create src folder if not exists
 fs.lstat(__dirname, (_, stats) => {
  if (!stats.isDirectory()) {
@@ -37,5 +56,6 @@ fs.writeFileSync(
   `# ${projectName}`
 );
 
+// This will have to wait
 // Done!
-console.log(`Done! Your new React app is ready at ${projectPath}.`);
+console.log(`\x1b[32m Done! Your new React app is ready at\n\x1b[0m ${projectPath}.`);
