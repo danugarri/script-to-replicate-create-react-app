@@ -22,10 +22,10 @@ fs.readdir(projectName, { withFileTypes: true }, (__, files) => {
 // Move into the project directory
 const projectPath = path.join(__dirname, projectName);
 
-console.log(`1.Moving into ${projectName} directory...`);
+console.log(`\x1b[32m1.Moving into ${projectName} directory...\x1b[0m`);
 process.chdir(projectPath);
 //initialising git repository if not exists
-console.log("2.Initialising an empty git repository...");
+console.log("\x1b[32m2.Initialising an empty git repository...\x1b[0m");
 execSync(`git init`);
 
 // create public folder if not exists
@@ -69,7 +69,7 @@ fs.writeFileSync(
 );
 
 // Add some additional files inside src
-console.log("3.Creating the Src content...");
+console.log("\x1b[32m3.Creating the Src content...\x1b[0m");
 fs.writeFileSync(
   path.join(projectPath, "src", "index.css"),
   `body {
@@ -285,7 +285,7 @@ fs.writeFileSync(
 `
 );
 // installing all dependencies
-console.log("4.Installing all needed dependencies...\n");
+console.log("\x1b[32m4.Installing all needed dependencies...\x1b[0m\n");
 execSync(`npm i`, { stdio: "inherit" });
 // Running dev environment
 console.log("5.Running dev environment...");
