@@ -43,7 +43,9 @@ fs.writeFileSync(
   `<!DOCTYPE html>
   <html lang="en">
       <head>
-          <meta charset="UTF-8" />
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="theme-color" content="#000000" />
           <meta
               name="description"
               content="This a basic React app made from scratch as alternative to the deprecated create-react-app" />
@@ -57,6 +59,14 @@ fs.writeFileSync(
   </html>
   `
 );
+fs.writeFileSync(
+  path.join(projectPath, "public", "robots.txt"),
+  `# https://www.robotstxt.org/robotstxt.html
+  User-agent: *
+  Disallow:
+  `
+);
+
 //   }
 // });
 // create src folder if not exists
@@ -74,6 +84,20 @@ fs.writeFileSync(
     margin: 0;
     padding: 0;
   }`
+);
+fs.writeFileSync(
+  path.join(projectPath, "src", "index.jsx"),
+  `import React from 'react'
+  import ReactDOM from 'react-dom/client'
+  import App from './App'
+  import './index.css'
+  
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  )
+  `
 );
 fs.writeFileSync(
   path.join(projectPath, "README.md"),
