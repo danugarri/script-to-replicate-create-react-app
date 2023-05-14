@@ -1,3 +1,13 @@
 to execute the script:
 
-run node create-react-app.js app_name
+1. Locally with the node interpreter
+
+run :
+
+`node create-react-app-danugarri.js app_name`
+
+2. With npx
+
+run :
+
+`npx create-react-app-danugarri.js app_name`
