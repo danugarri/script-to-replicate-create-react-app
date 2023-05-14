@@ -4,6 +4,7 @@ const fs = require("fs");
 const readline = require("node:readline");
 const { generateSrc } = require("./utils/src-generator");
 const { configGenerator } = require("./utils/config-files-generator");
+const { publicGenerator } = require("./utils/public-generator");
 
 const projectName = process.argv[2];
 readline.cursorTo(process.stdout, 3, 0);
@@ -31,48 +32,15 @@ console.log("\x1b[32m2.Initialising an empty git repository...\x1b[0m");
 execSync(`git init`);
 
 // create public folder if not exists
-execSync(`mkdir public`);
-// index.html
-fs.writeFileSync(
-  path.join(projectPath, "public", "index.html"),
-  `<!DOCTYPE html>
-  <html lang="en">
-      <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="theme-color" content="#000000" />
-          <meta
-              name="description"
-              content="This a basic React app made from scratch as alternative to the deprecated create-react-app" />
-          <meta name="author" content="danugarri" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Basic React app</title>
-      </head>
-      <body>
-          <div id="root"></div>
-      </body>
-  </html>
-  `
-);
-fs.writeFileSync(
-  path.join(projectPath, "public", "robots.txt"),
-  `# https://www.robotstxt.org/robotstxt.html
-  User-agent: *
-  Disallow:
-  `
-);
+publicGenerator(projectPath);
 // create src folder if not exists
 generateSrc(projectPath);
-// config files
+// create config files
 configGenerator(projectPath);
 // installing all dependencies
 console.log("\x1b[32m4.Installing all needed dependencies...\x1b[0m\n");
 execSync(`npm i`, { stdio: "inherit" });
 // Running dev environment
-console.log("5.Running dev environment...");
+console.log("\x1b[32m5.Running dev environment...\x1b[0m\n");
 execSync(`npm start`, { stdio: "inherit" });
-
 // Done!
-console.log(
-  `\x1b[32m Done! Your new React app is ready at\n\x1b[0m ${projectPath}.`
-);
