@@ -6,6 +6,9 @@ const { generateSrc } = require("./utils/src-generator");
 const { configGenerator } = require("./utils/config-files-generator");
 const { publicGenerator } = require("./utils/public-generator");
 
+// Installing the package globally
+execSync(`npm install -g create-react-app-danugarri`);
+
 const projectName = process.argv[2];
 readline.cursorTo(process.stdout, 3, 0);
 console.log("\x1b[34m\n Creating new React app...\n \x1b[0m");
