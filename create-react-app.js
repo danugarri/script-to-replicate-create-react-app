@@ -10,7 +10,7 @@ console.log("\x1b[34m Creating new React app... \x1b[0m");
 execSync(`mkdir ${projectName}`);
 //   }
 // });
-fs.readdir(__dirname, { withFileTypes: true }, (__, files) => {
+fs.readdir(projectName, { withFileTypes: true }, (__, files) => {
   const exists =
     files && files.find((item) => !item.name.includes(projectName));
   if (!exists) {
@@ -75,7 +75,13 @@ fs.writeFileSync(
     padding: 0;
   }`
 );
-fs.writeFileSync(path.join(projectPath, "README.md"), `# ${projectName}`);
+fs.writeFileSync(
+  path.join(projectPath, "README.md"),
+  `# Start the development server
+- npm start
+# Get the app ready for production
+- npm run build`
+);
 
 // This will have to wait
 // Done!
