@@ -1,16 +1,14 @@
 const { execSync } = require("child_process");
 const path = require("path");
 const fs = require("fs");
+const readline = require("node:readline");
 
 const projectName = process.argv[2];
-console.log("\x1b[34m Creating new React app... \x1b[0m");
+readline.cursorTo(process.stdout, 3, 0);
+console.log("\x1b[34m\n Creating new React app...\n \x1b[0m");
 // create the root directory if not exists
-// fs.lstat(__dirname, (_, stats) => {
-//   if (!stats.isDirectory()) {
 execSync(`mkdir ${projectName}`);
 
-//   }
-// });
 fs.readdir(projectName, { withFileTypes: true }, (__, files) => {
   const exists =
     files && files.find((item) => !item.name.includes(projectName));
@@ -23,23 +21,16 @@ fs.readdir(projectName, { withFileTypes: true }, (__, files) => {
 
 // Move into the project directory
 const projectPath = path.join(__dirname, projectName);
-console.log(`Moving into ${projectName} directory...`);
+
+console.log(`1.Moving into ${projectName} directory...`);
 process.chdir(projectPath);
 //initialising git repository if not exists
-console.log("Initialising an empty git repository...");
-fs.readdir(projectName, { withFileTypes: true }, (__, files) => {
-  const exists = files && files.find((item) => !item.name.includes(".git"));
-  if (!exists) {
-    execSync(`git init`);
-  } else {
-    console.log("There is already a git repository");
-  }
-});
-// create public folder if not exists
-// fs.lstat(__dirname, (_, stats) => {
-//   if (!stats.isDirectory()) {
-execSync(`mkdir public`);
+console.log("2.Initialising an empty git repository...");
+execSync(`git init`);
 
+// create public folder if not exists
+execSync(`mkdir public`);
+// index.html
 fs.writeFileSync(
   path.join(projectPath, "public", "index.html"),
   `<!DOCTYPE html>
@@ -78,7 +69,7 @@ fs.writeFileSync(
 );
 
 // Add some additional files inside src
-console.log("Adding additional files...");
+console.log("3.Creating the Src content...");
 fs.writeFileSync(
   path.join(projectPath, "src", "index.css"),
   `body {
@@ -294,13 +285,12 @@ fs.writeFileSync(
 `
 );
 // installing all dependencies
-console.log("Installing all needed dependencies...");
+console.log("4.Installing all needed dependencies...\n");
 execSync(`npm i`, { stdio: "inherit" });
 // Running dev environment
-console.log("Running dev environment...");
+console.log("5.Running dev environment...");
 execSync(`npm start`, { stdio: "inherit" });
 
-// This will have to wait
 // Done!
 console.log(
   `\x1b[32m Done! Your new React app is ready at\n\x1b[0m ${projectPath}.`
