@@ -22,6 +22,8 @@ process.chdir(projectPath);
 //initialising git repository if not exists
 console.log("\x1b[32m2.Initialising an empty git repository...\x1b[0m");
 execSync(`git init`);
+execSync(`git add .`);
+execSync(`git commit -m 'first commit'`);
 
 // create public folder if not exists
 publicGenerator(projectPath);
