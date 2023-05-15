@@ -3,9 +3,10 @@ const path = require("path");
 const configGenerator = (projectPath) => {
   fs.writeFileSync(
     path.join(projectPath, "README.md"),
-    `# Start the development server
+    `
+    # Start the development server
       - npm start
-      # Get the app ready for production
+    # Get the app ready for production
       - npm run build`
   );
   fs.writeFileSync(
