@@ -5,5 +5,11 @@
   "description": "Script to create a React app as npx create-react-app did",
   "bin": {
     "create-app": "./create-react-app-danugarri-dg.js"
-  }
+  },
+  "keywords": [
+    "React",
+    "node",
+    "javascript"
+  ],
+  "license": "MIT"
 }
