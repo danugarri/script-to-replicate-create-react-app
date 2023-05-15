@@ -1,6 +1,6 @@
 to execute the script:
 
-# 1. Locally
+# 1. Locally(if you had the package in your machine)
 
 1. 1. with the node interpreter
 
