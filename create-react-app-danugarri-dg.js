@@ -27,7 +27,9 @@ fs.readdir(projectName, { withFileTypes: true }, (__, files) => {
 const projectPath = path.join(__dirname, projectName);
 
 console.log(`\x1b[32m1.Moving into ${projectName} directory...\x1b[0m`);
-process.chdir(projectPath);
+// process.chdir(projectPath);
+execSync(`cd ${projectName}`);
+
 //initialising git repository if not exists
 console.log("\x1b[32m2.Initialising an empty git repository...\x1b[0m");
 execSync(`git init`);
