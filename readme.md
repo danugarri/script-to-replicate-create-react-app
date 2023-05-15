@@ -1,13 +1,25 @@
 to execute the script:
 
-1. Locally with the node interpreter
+# 1. Locally
+
+1. 1. with the node interpreter
 
 run :
 
-`node create-react-app-danugarri.js app_name`
+`node create-react-app-danugarri-dg.js app_name`
 
-2. With npx
+1. 2. With npx
 
-run :
+a) It is needed to have installed the package globally
 
-`npx create-react-app-danugarri.js app_name`
+- `npm install -g create-react-app-danugarri-dg`
+
+b) run :
+
+`npx create-react-app-danugarri-dg app_name`
+
+# 2. Without having the package locally(As it is uploaded to the npm registry)
+
+run:
+
+- `npx create-react-app-danugarri-dg app-name`
