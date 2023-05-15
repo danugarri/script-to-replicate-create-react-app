@@ -33,6 +33,6 @@ configGenerator(projectPath);
 console.log("\x1b[32m4.Installing all needed dependencies...\x1b[0m\n");
 execSync(`npm i`, { stdio: "inherit" });
 // Running dev environment
-console.log("\x1b[32m5.Running dev environment...\x1b[0m\n");
+console.log("\x1b[32m\n5.Running dev environment...\x1b[0m\n");
 execSync(`npm start`, { stdio: "inherit" });
 // Done!
