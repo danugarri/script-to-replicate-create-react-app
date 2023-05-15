@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { execSync } = require("child_process");
 const path = require("path");
 const fs = require("fs");
@@ -5,9 +6,6 @@ const readline = require("node:readline");
 const { generateSrc } = require("./utils/src-generator");
 const { configGenerator } = require("./utils/config-files-generator");
 const { publicGenerator } = require("./utils/public-generator");
-
-// Installing the package globally
-execSync(`npm install -g create-react-app-danugarri`);
 
 const projectName = process.argv[2];
 readline.cursorTo(process.stdout, 3, 0);
