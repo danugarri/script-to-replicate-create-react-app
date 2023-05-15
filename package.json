@@ -1,7 +1,7 @@
 {
   "name": "create-react-app-danugarri-dg",
   "author": "danugarri",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Script to create a React app as npx create-react-app did",
   "bin": {
     "create-app": "./create-react-app-danugarri-dg.js"
