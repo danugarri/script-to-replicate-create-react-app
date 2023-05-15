@@ -14,7 +14,7 @@ console.log("\x1b[34m\n Creating new React app...\n \x1b[0m");
 execSync(`mkdir ${projectName}`);
 
 // Move into the project directory
-const projectPath = path.join(process.cwd, projectName);
+const projectPath = path.join(process.cwd(), projectName);
 
 console.log(`\x1b[32m1.Moving into ${projectName} directory...\x1b[0m`);
 process.chdir(projectPath);
